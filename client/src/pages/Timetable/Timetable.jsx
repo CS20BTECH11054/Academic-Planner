@@ -1,7 +1,16 @@
-import React from "react"
+import Navbar from "../../components/Navbar/Navbar"
+import Header from "../../components/Header/Header"
 
-const Timetable = () => {
-    return <div>Timetable</div>
+import React, { Component } from 'react'
+
+export default class Timetable extends Component {
+  render() {
+    return (
+    <div>
+        <Navbar/>
+        <Header pos="Timetable"/>
+        Timetable
+    </div>
+    )
+  }
 }
-
-export default Timetable

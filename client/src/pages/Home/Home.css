@@ -1,0 +1,39 @@
+.Tasks{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1024px;
+    align-content: center;
+    margin-left:100px;
+    height:100%;
+}
+
+.Daily{
+
+    width:100%;
+    background-color: wheat;
+    margin-top: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    align-content: baseline;
+}
+
+.DailyTitle{
+    display: flex;
+    height:100%;
+    color:white;
+    font-size:bold;
+    align-items: center;
+    background-color: dodgerblue;
+    justify-content: center;
+}
+
+.WeeklyTitle{
+    display: flex;
+    height:100%;
+    color:white;
+    font-size:bold;
+    align-items: center;
+    background-color: dodgerblue;
+    justify-content: center;
+}

@@ -1,7 +1,17 @@
-import React from "react"
+//import React from "react"
+import Navbar from "../../components/Navbar/Navbar"
+import Header from "../../components/Header/Header"
 
-const CourseRoad = () => {
-    return <div>CourseRoad</div>
+import React, { Component } from 'react'
+
+export default class CourseRoad extends Component {
+  render() {
+    return (
+      <div>
+        <Navbar/>
+        <Header pos="CourseRoad"/>
+        <div>CourseRoad</div>
+      </div>
+    )
+  }
 }
-
-export default CourseRoad

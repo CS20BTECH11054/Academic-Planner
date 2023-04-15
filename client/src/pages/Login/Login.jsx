@@ -1,7 +1,16 @@
-import React from "react"
+import Navbar from "../../components/Navbar/Navbar"
+import Header from "../../components/Header/Header"
 
-const Login = () => {
-    return <div>Login</div>
+import React, { Component } from 'react'
+
+export default class Login extends Component {
+  render() {
+    return (
+    <div>
+        <Navbar/>
+        <Header pos="Login"/>
+       <div>Login</div>
+    </div>
+    )
+  }
 }
-
-export default Login
