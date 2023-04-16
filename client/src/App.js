@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login.jsx";
 import Profile from "./pages/Profile/Profile.jsx"
 import Timetable from "./pages/Timetable/Timetable.jsx";
 function App() {
+  localStorage.setItem('user',"null")
   return (
     <BrowserRouter>
       <Routes>

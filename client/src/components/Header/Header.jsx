@@ -7,7 +7,7 @@ class Header extends Component {
     constructor(){
         super()
         this.state = {
-            active: "Home"
+            active: ""
         }
     }
     handleClick(act)
