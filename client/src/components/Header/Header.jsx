@@ -51,9 +51,9 @@ class Header extends Component {
                 <div className="CourseRoad">
                     <span className={`items ${(this.state.active === "CourseRoad") ? "active" : ""}`} onClick={() =>this.handleClick("CourseRoad")}>CourseRoad</span>
                 </div>
-                <div className="Profile">
+                {(localStorage.getItem('user') !== "null") ? <div className="Profile">
                     <span className={`items ${(this.state.active === "Profile") ? "active" : ""}`} onClick={() =>this.handleClick("Profile")}>Profile</span>
-                </div>
+                </div> : <div></div>}
             </div>
         </div>
       </div>

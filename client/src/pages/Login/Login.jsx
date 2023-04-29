@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header"
 import React, { Component } from 'react'
 import "./Login.css"
 import { withRouter } from "../../withRouter"
+import axios from "axios"
 
 class Login extends Component {
   constructor(){
@@ -26,10 +27,18 @@ class Login extends Component {
         password : e.target.value
       })
   }
+  loginsucceeded()
+  {
+    this.props.navigate('/', {state : {pos : "Home"}})
+    localStorage.setItem('user', this.state.username)
+  }
   handleClick()
   {
-    localStorage.setItem('user',this.state.username)
-    this.props.navigate('/', {state : {pos : "Home"}})
+    axios.get(`http://localhost:5000/api/user/password?username=${this.state.username}`)
+      .then(response => {
+        (response.data === this.state.password)? this.loginsucceeded() : alert("Wrong Password")
+      })
+    
   }
 
   render() {
