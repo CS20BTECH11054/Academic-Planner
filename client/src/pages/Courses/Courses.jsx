@@ -17,16 +17,30 @@ export default class Courses extends Component {
       mycourses: false,
       query_type: "",
       query:"",
-      Selected_Course:null
+      Selected_Course:null,
+      SearchRes: []
     }
   }
 
   handleClick()
   {
-    alert("Searched "+this.state.query)
-    this.setState({
-      query: ""
-    })
+    const handleCourseSearch = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/user/courses/search?name=${this.state.query}`);
+        this.setState({
+          SearchRes: res.data
+        })
+        this.setState({
+          query: ""
+        })
+      } catch (error) {
+        console.log(error)
+        this.setState({
+          query: ""
+        })
+        }
+      }
+      handleCourseSearch()
   }
 
   handlemyCoursesClick()
@@ -106,6 +120,7 @@ export default class Courses extends Component {
           <table className="Courseitemsborder">
                 <tr className="Courserows"><th className="Courseitems">CourseCode</th> <th className="Courseitems">Course</th></tr>
                 {this.state.res && this.state.res.map(res => <tr className={`Courserows ${(this.state.Selected_Course === res['name']) ? "active" : ""}`} onClick={(e)=>this.handleCourseClick(e,res['name'])}><td className="Courseitems">{res["code"]}</td><td className="Courseitems">{res["name"]}</td></tr>)}
+                {this.state.SearchRes && this.state.SearchRes.map(res => <tr className={`Courserows ${(this.state.Selected_Course === res['name']) ? "active" : ""}`} onClick={(e)=>this.handleCourseClick(e,res['name'])}><td className="Courseitems">{res["code"]}</td><td className="Courseitems">{res["name"]}</td></tr>)}
           </table>
           {(this.state.Selected_Course === null) ? null : 
           ((this.state.mycourses) ? <div className="Buttonscontainer">

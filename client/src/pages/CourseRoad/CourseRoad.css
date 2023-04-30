@@ -22,6 +22,7 @@
     cursor: pointer;
     width: 30px;
     text-align: center;
+    align-self: center;
 }
 
 .CourseRoadWindow{
@@ -74,13 +75,21 @@
     padding: 5px;
     cursor: pointer;
     color: dodgerblue;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.CourseRoadSemCourseItems.active{
+    background-color: lightsalmon;
 }
 
 .CourseRoadOptsContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin:30px;
+    margin-top:30px;
+    margin-left: 1000px;
     background-color: lightgray;
     width: 350px;
 }
@@ -145,4 +154,45 @@
     margin-left: 10px;
     margin-right: 10px;
     color: darkorange;
+}
+
+.CourseRoadTable{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+}
+
+.CourseRoadTableRow{
+    border-top:solid 1px dodgerblue;
+    border-bottom: solid 1px dodgerblue;
+}
+
+.CourseRoadTableRow.active{
+    background-color: dodgerblue;
+}
+
+.CourseRoadTableItems{
+    border-left: solid 1px dodgerblue;
+    border-right: solid 1px dodgerblue;
+    width: 150px;
+    cursor: pointer;
+}
+
+.CourseRoadMsg{
+    color: red;
+    background-color: lightgray;
+}
+
+.CourseInfoTitleContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CourseInfoDelete{
+    background-color: darkorange;
+    color:dodgerblue;
+    cursor: pointer
 }
