@@ -113,17 +113,7 @@
     cursor: pointer;
 }
 
-.SemCredInfoContainer{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: lightgreen;
-    color: white;
-}
 
-.SemCredInfoItems{
-    margin: 10px;
-}
 
 .CourseInfoContainer{
     max-width: 300px;

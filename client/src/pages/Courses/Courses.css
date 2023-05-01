@@ -124,3 +124,14 @@
     border-radius: 5px;
     margin: 20px;
 }
+
+.GPA{
+    border: solid 1px dodgerblue;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    justify-self: center;
+    margin: 20px;
+    padding: 2px;
+    align-self: center;
+}

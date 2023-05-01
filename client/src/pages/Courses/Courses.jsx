@@ -18,12 +18,12 @@ export default class Courses extends Component {
       query_type: "",
       query:"",
       Selected_Course:null,
-      SearchRes: []
+      SearchRes: [],
+      GPA: false
     }
   }
 
-  handleClick()
-  {
+  handleClick = ()=> {
     const handleCourseSearch = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/user/courses/search?name=${this.state.query}`);
@@ -54,7 +54,9 @@ export default class Courses extends Component {
     }
     else{
       this.setState({
-        mycourses: true
+        mycourses: true,
+        SearchRes:[],
+        res:[]
       })
       axios.get("http://localhost:5000/api/courses")
       .then(response => {
@@ -81,7 +83,7 @@ export default class Courses extends Component {
     .then(response => {console.log(response)})
   }
 
-  handleChange(e)
+  handleChange = (e)=>
   {
     const obj = e["value"]
     this.setState({
@@ -89,13 +91,19 @@ export default class Courses extends Component {
     })
   }
 
-  handleinputChange(e)
-  {
+  handleinputChange = (e) => {
     //console.log(e.target.value)
     this.setState({
       query: e.target.value
     })
     //console.log(this.state.query)
+  }
+
+  handleCGPA(str)
+  {
+    this.setState({
+      GPA: true
+    })
   }
 
   render() {
@@ -111,9 +119,9 @@ export default class Courses extends Component {
           <div className="Coursescontainer">
             <div className="Coursestitle">{this.state.mycourses ? "My Courses" : "All Courses"}</div>
             <div className="Coursesearchcontainer">
-              <Select options={options} onChange={(e)=>this.handleChange(e)} placeholder="Select"/>
-              <input placeholder={this.state.query_type} className="CourseSearchinput" onChange={(e)=>{this.handleinputChange(e)}}/>
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="CourseSearch" onClick={()=>this.handleClick()}/>
+              <Select options={options} onChange={this.handleChange} placeholder="Select"/>
+              <input placeholder={this.state.query_type} className="CourseSearchinput" onChange={this.handleinputChange}/>
+              <FontAwesomeIcon icon={faMagnifyingGlass} className="CourseSearch" onClick={this.handleClick}/>
             </div>
             <span className={`mycourses ${(this.state.mycourses) ? "active" : ""}`} onClick={()=>this.handlemyCoursesClick()}>My Courses</span>
           </div>
@@ -124,10 +132,11 @@ export default class Courses extends Component {
           </table>
           {(this.state.Selected_Course === null) ? null : 
           ((this.state.mycourses) ? <div className="Buttonscontainer">
-          <div className="ButtonsCourses">Max_CGPA</div>
-          <div className="ButtonsCourses">CGPA</div>
+          <div className="ButtonsCourses" onClick={()=>this.handleCGPA("MAX")}>Max_CGPA</div>
+          <div className="ButtonsCourses" onClick={()=>this.handleCGPA()}>CGPA</div>
           <div className="ButtonsCourses">Delete</div>
           </div> : <div className="Buttonscontainer" onClick={()=>this.handleAddClick()}><div className="ButtonsCourses">Add</div></div>)}
+          {(this.state.GPA) ? <div>GPA:<div className="GPA">0.0</div></div>: null}
         </div>
     </div>
     )
