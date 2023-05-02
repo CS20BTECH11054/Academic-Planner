@@ -5,10 +5,7 @@ export default class Daily extends Component {
   render() {
     return (
       <div className='Dailycontainer'>
-        <div className='Dailyitems'>Complete SWE Project</div>
-        <div className='Dailyitems'>Complete SWE Project</div>
-        <div className='Dailyitems'>Complete SWE Project</div>
-        <div className='Dailyitems'>Complete SWE Project</div>
+        {this.props.tasks && this.props.tasks.map((task, index) => <div className='Dailyitems'>{task}</div>)}
       </div>
     )
   }

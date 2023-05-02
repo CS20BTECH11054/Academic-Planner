@@ -7,6 +7,7 @@ export default class Course{
         this.slot = slot
         this.prerequisites = prerequisites
         this.sem = sem
+        this.elec = ""
         this.msg = []
     }
     setMsg(str)

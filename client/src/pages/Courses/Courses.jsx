@@ -26,7 +26,10 @@ export default class Courses extends Component {
   handleClick = ()=> {
     const handleCourseSearch = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/user/courses/search?name=${this.state.query}`);
+        const headers = {
+          'Authorization': `${sessionStorage.getItem('token')}`
+        };
+        const res = await axios.get(`http://localhost:5000/api/user/courses/search?name=${this.state.query}`,{headers});
         this.setState({
           SearchRes: res.data
         })

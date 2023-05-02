@@ -102,7 +102,10 @@ export default class CourseRoad extends Component {
         var sem = 0
         const handleCourseRoad = async () => {
           try {
-            const res = await axios.get(`http://localhost:5000/api/user/courseRoad?dept=${this.state.SelectedDep}&sem=${sem}`);
+            const headers = {
+              'Authorization': `${sessionStorage.getItem('token')}`
+            };
+            const res = await axios.get(`http://localhost:5000/api/user/courseRoad?dept=${this.state.SelectedDep}&sem=${sem}`,{headers});
             for(var i=0; i<res.data.length; i++)
             {
               const course = new Course(res.data[i].name, res.data[i].code, res.data[i].credits, res.data[i].dept, res.data[i].slot, res.data[i].prerequisites, res.data[i].sem)
@@ -226,7 +229,10 @@ export default class CourseRoad extends Component {
   {
     const handleCourseSearch = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/user/courses/search?name=${this.state.Input}`);
+      const headers = {
+        'Authorization': `${sessionStorage.getItem('token')}`
+      };
+      const res = await axios.get(`http://localhost:5000/api/user/courses/search?name=${this.state.Input}`,{headers});
       this.setState({
         SearchRes: res.data
       })
